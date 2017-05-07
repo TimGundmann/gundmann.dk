@@ -1,6 +1,6 @@
 version: '2'
 services:
-  web:
+  gundmanndk:
     restart: "always"
     build: .
     ports:
