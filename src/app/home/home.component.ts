@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   someStrings: string[];
   img_url: string;
   img_url_left: string;
+  img_url_right;
   pic_width: string;
   pic_height: string;
   url = environment.host;
@@ -42,13 +43,15 @@ export class HomeComponent implements OnInit {
       eventSource.onmessage = x => {
         const json: PushBanner[] = JSON.parse(x.data);
         console.log('array lenght ' + json.length);
-        if (json.length > 3) {
-          this.img_url = json[1].img_url;
-          this.img_url_left = json[2].img_url;
-        } else {
+
+        if ( json.length > 1 && json.length <= 4) {
+
+          this.img_url = json[0].img_url;
+          this.img_url_left = json[1].img_url;
+          this.img_url_right = json[2].img_url;
+        } else  if (json.length < 2) {
           this.img_url = json[0].img_url;
         }
-
       };
 
       eventSource.onerror = x => observer.error(x.data);

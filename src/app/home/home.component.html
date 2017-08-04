@@ -1,24 +1,26 @@
 <div style="align-content: center; width: 50%; border-bottom: 2px; border-bottom-color: black;" >
-<form  [formGroup]="campagingroup" novalidate="novalidate">
 
-  <input type="text" formControlName="campaginname">
-<button type="submit" (click)="submit()">Run Demo</button>
-
-</form>
 </div>
 <div class="top">
   <img id="top">
 </div>
 
 <div class="left">
-  <img id="left" src="{{img_url_left}}"  width="160px" height="600pxs">
+  <img id="left" src="{{img_url_left}}"  style="width: 160px; height: 600px">
 </div>
 
+<form  [formGroup]="campagingroup" novalidate="novalidate">
+
+  <input type="text" formControlName="campaginname">
+  <button type="submit" (click)="submit()">Run Demo</button>
+
+</form>
+
 <div class="right">
-  <img id="right">
+  <img id="right" src="{{img_url_right}}" style="width: 160px; height: 600px">
 </div>
 <div class="bottom">
 	<div class="center">
-    <img id="bottom" src="{{img_url}}" class="bottom">
+    <img id="bottom" src="{{img_url}}" style="width: 600px; height: 300px;">
 	</div>
 </div>
