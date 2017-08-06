@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   img_url: string;
   img_url_left: string;
   img_url_right;
+  img_url_top: string;
   pic_width: string;
   pic_height: string;
   url = environment.host;
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.campagingroup = this.fb.group({
-      'campaginname': ''
+      'campagin_name': ''
     });
   }
 
@@ -33,8 +34,7 @@ export class HomeComponent implements OnInit {
   }
 
   submit() {
-
-    this.campaginname = this.campagingroup.get('campaginname').value;
+    this.campaginname = this.campagingroup.get('campagin_name').value;
     console.log('Campagin name' + this.campaginname);
     console.log(this.campaginname);
     const observable = Observable.create(observer => {
@@ -49,6 +49,7 @@ export class HomeComponent implements OnInit {
           this.img_url = json[0].img_url;
           this.img_url_left = json[1].img_url;
           this.img_url_right = json[2].img_url;
+          this.img_url_top = json[3].img_url;
         } else  if (json.length < 2) {
           this.img_url = json[0].img_url;
         }
@@ -68,6 +69,6 @@ export class HomeComponent implements OnInit {
       error: err => console.error('something wrong occurred: ' + err)
     });
 
-
+this.campagingroup.reset();
   }
 }

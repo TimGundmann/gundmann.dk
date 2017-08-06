@@ -1,26 +1,58 @@
-<div style="align-content: center; width: 50%; border-bottom: 2px; border-bottom-color: black;" >
 
-</div>
-<div class="top">
-  <img id="top">
-</div>
 
-<div class="left">
-  <img id="left" src="{{img_url_left}}"  style="width: 160px; height: 600px">
-</div>
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+  <header class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+      <div class="top">
+        <img id="top" src="{{img_url_top}}">
+      </div>
+    </div>
+  </header>
 
-<form  [formGroup]="campagingroup" novalidate="novalidate">
 
-  <input type="text" formControlName="campaginname">
-  <button type="submit" (click)="submit()">Run Demo</button>
+  <main class="mdl-layout__content">
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--3-col ">
+        <div class="left">
+        <img id="left" src="{{img_url_left}}" style="width: 160px; height: 600px">
+        </div>
+        </div>
 
-</form>
+      <div class="mdl-cell mdl-cell--6-col">
 
-<div class="right">
-  <img id="right" src="{{img_url_right}}" style="width: 160px; height: 600px">
-</div>
-<div class="bottom">
-	<div class="center">
-    <img id="bottom" src="{{img_url}}" style="width: 600px; height: 300px;">
-	</div>
+        <div style="alignment: center; background-color: cornflowerblue; border-top: 600px;">
+          <div >
+            <span>To Test ad-scoop write your campaing name and press run demo </span>
+          </div>
+        <form [formGroup]="campagingroup" novalidate="novalidate">
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" id="campaginname" formControlName="campagin_name">
+            <label class="mdl-textfield__label" for="campaginname">campagin name</label>
+          </div>
+          <button class="mdl-button mdl-js-button mdl-button--raised" (click)="submit()">
+            Run Demo
+          </button>
+        </form>
+      </div>
+      </div>
+      <div class="mdl-cell mdl-cell--3-col">
+        <div class="right">
+        <img id="right" src="{{img_url_right}}" style="width: 160px; height: 600px">
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="mdl-mega-footer">
+    <div class="mdl-mega-footer__middle-section">
+
+      <div class="center">
+        <img id="bottom" src="{{img_url}}" style="width: 600px; height: 150px;">
+      </div>
+
+    </div>
+  </footer>
+
 </div>
