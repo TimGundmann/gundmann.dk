@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
     console.log('Campagin name' + this.campaginname);
     console.log(this.campaginname);
     const observable = Observable.create(observer => {
-      const eventSource = new EventSource(this.url + '/demo/try/' + this.campaginname);
+      const eventSource = new EventSource(this.url + '/try/' + this.campaginname);
 
       eventSource.onmessage = x => {
         const json: PushBanner[] = JSON.parse(x.data);
@@ -69,6 +69,6 @@ export class HomeComponent implements OnInit {
       error: err => console.error('something wrong occurred: ' + err)
     });
 
-this.campagingroup.reset();
+    this.campagingroup.reset();
   }
 }
