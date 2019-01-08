@@ -1,6 +1,5 @@
 import {Component, NgZone, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import * as EventSource from 'eventsource';
 import {PushBanner} from './push-banner';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {environment} from '../../environments/environment';
