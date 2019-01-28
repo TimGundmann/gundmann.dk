@@ -16,6 +16,7 @@ import { AttComponent } from './att/att.component';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { MatCardModule, MatSliderModule } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'  },
@@ -38,6 +39,7 @@ export function tokenGetter() {
     UserInfoComponent,
     AttComponent,
   ],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   imports: [
     NgxAudioPlayerModule,
     BrowserModule,
