@@ -13,7 +13,6 @@ import { SigninComponent } from './signin/signin.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AttComponent } from './att/att.component';
-import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { MatCardModule, MatSliderModule } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -41,15 +40,12 @@ export function tokenGetter() {
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   imports: [
-    NgxAudioPlayerModule,
     BrowserModule,
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    MatCardModule,
-    MatSliderModule,
     BrowserAnimationsModule,
     JwtModule.forRoot({
       config: {
