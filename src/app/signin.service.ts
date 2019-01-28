@@ -11,7 +11,7 @@ export class SigninService {
   constructor(private httpClient: HttpClient) { }
 
   public signIn(email: string, password: string): Observable<boolean> {
-    return this.httpClient.post('http://localhost:8080/users/login', `{ "username": "${email}", "password": "${password}" }`, {observe: 'response'})
+    return this.httpClient.post('https://www.gundmann.dk/users/login', `{ "username": "${email}", "password": "${password}" }`, {observe: 'response'})
       .pipe(
         map(resp => { 
             localStorage.setItem('Authorization', resp.headers.get('Authorization'));
