@@ -3,24 +3,24 @@ import { AuthGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
 import { SigninComponent } from './signin/signin.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AttComponent } from './att/att.component';
-import { MatCardModule, MatSliderModule } from '@angular/material';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full'  },
-  { path: 'home', component: HomeComponent  },
-  { path: 'signin', component: SigninComponent  },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'signin', component: SigninComponent },
   { path: 'att', component: AttComponent },
   { path: 'user', component: UserInfoComponent, canActivate: [AuthGuard] }
 ];
@@ -38,8 +38,9 @@ export function tokenGetter() {
     UserInfoComponent,
     AttComponent,
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   imports: [
+    MatButtonModule,
     BrowserModule,
     FormsModule,
     HttpModule,

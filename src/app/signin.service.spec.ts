@@ -1,9 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
 import { SigninService } from './signin.service';
 
 describe('SigninService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+
+  class HttpClientMock {}
+
+  beforeEach(() => TestBed.configureTestingModule({
+    providers: [ { provide: HttpClient, useClass: HttpClientMock } ]
+  }));
 
   it('should be created', () => {
     const service: SigninService = TestBed.get(SigninService);
