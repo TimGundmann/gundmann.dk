@@ -1,8 +1,6 @@
 pipeline {
     agent any
 
-    def committerEmail;
-
     tools {
         nodejs 'node 11'
     }
