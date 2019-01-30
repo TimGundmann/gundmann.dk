@@ -1,4 +1,4 @@
-import { SigninService } from '../../services/signin.service';
+import { UserService } from '../../services/user.service';
 import { FormsModule } from '@angular/forms';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -9,12 +9,12 @@ describe('SigninComponent', () => {
   let component: SigninComponent;
   let fixture: ComponentFixture<SigninComponent>;
 
-  class SigninServiceMock {}
+  class UserServiceMock {}
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SigninComponent ],
-      providers: [ { provide: SigninService, useClass: SigninServiceMock } ],
+      providers: [ { provide: UserService, useClass: UserServiceMock } ],
       imports: [ 
         FormsModule,
         RouterTestingModule

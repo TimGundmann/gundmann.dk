@@ -1,3 +1,4 @@
+import { AddAuthHeaderInterceptor } from './add-auth-header.interceptor';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
@@ -11,7 +12,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
 import { SigninComponent } from './user/signin/signin.component';
 import { UserInfoComponent } from './user/user-info/user-info.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AttComponent } from './att/att.component';
 import { MatButtonModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -38,7 +39,15 @@ export function tokenGetter() {
     UserInfoComponent,
     AttComponent,
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [
+    { provide: LocationStrategy, 
+      useClass: HashLocationStrategy 
+    },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AddAuthHeaderInterceptor,
+    multi: true,
+  }],
   imports: [
     MatButtonModule,
     BrowserModule,

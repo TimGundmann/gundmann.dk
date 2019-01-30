@@ -1,4 +1,4 @@
-import { SigninService } from '../../services/signin.service';
+import { UserService } from '../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -13,13 +13,13 @@ export class SigninComponent implements OnInit {
 
   password: string;
 
-  constructor(private singInService: SigninService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
 
   signIn() {
-    this.singInService.signIn(this.email, this.password)
+    this.userService.signIn(this.email, this.password)
       .subscribe(r => {
         if (r) {
           this.router.navigate(['user']);

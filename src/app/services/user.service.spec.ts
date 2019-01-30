@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { HttpClient } from '@angular/common/http';
 
-import { SigninService } from './signin.service';
+import { UserService } from './user.service';
 
-describe('SigninService', () => {
+describe('UserService', () => {
 
   class HttpClientMock {}
 
@@ -12,7 +12,7 @@ describe('SigninService', () => {
   }));
 
   it('should be created', () => {
-    const service: SigninService = TestBed.get(SigninService);
+    const service: UserService = TestBed.get(UserService);
     expect(service).toBeTruthy();
   });
 });

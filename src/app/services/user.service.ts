@@ -1,17 +1,25 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { User } from 'app/user/domain/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SigninService {
+export class UserService {
+
+  serviceHost = environment.serviceHost;
 
   constructor(private httpClient: HttpClient) { }
 
+  public currentUserInfo(): Observable<User> {
+    return this.httpClient.get<User>(`${this.serviceHost}current`); 
+  }
+
   public signIn(email: string, password: string): Observable<boolean> {
-    return this.httpClient.post('https://www.gundmann.dk/users/login', `{ "username": "${email}", "password": "${password}" }`, {observe: 'response'})
+    return this.httpClient.post(`${this.serviceHost}login`, `{ "username": "${email}", "password": "${password}" }`, {observe: 'response'})
       .pipe(
         map(resp => { 
             localStorage.setItem('Authorization', resp.headers.get('Authorization'));
@@ -23,6 +31,5 @@ export class SigninService {
         }
         )
       );
-  }
 
-}
+  }}
