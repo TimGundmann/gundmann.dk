@@ -23,7 +23,7 @@ pipeline {
 
         stage('Build') {
             steps{   
-                sh 'ng build --prod --env=prod'
+                sh 'ng build --prod'
             }
         }
         stage('Deploy') {
