@@ -24,7 +24,7 @@ pipeline {
 
         stage('Build') {
             steps{   
-                sh 'ng build --prod --evn=prod'
+                sh 'ng build --prod'
             }
         }
         stage('Deploy') {
