@@ -8,12 +8,6 @@ pipeline {
         stage('Prepare') {
             steps{
                 git 'https://github.com/TimGundmann/gundmann.dk.git'
-                step {
-                committerEmail = sh (
-                        script: 'git --no-pager show -s --format=\'%ae\'',
-                        returnStdout: true
-                    ).trim()
-                }
                 sh 'npm install'
             }                
         }
@@ -44,7 +38,7 @@ pipeline {
 
   post {
       failure {
-          mail bcc: '', body: 'Build faliure of gundmann.dk', cc: '', from: 'jenkins@gundmann.dk', replyTo: '', subject: 'faliure', to: committerEmail
-      }
+            step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: emailextrecipients([[$class: 'CulpritsRecipientProvider'], [$class: 'RequesterRecipientProvider']])])      
+        }
   }    
 }
