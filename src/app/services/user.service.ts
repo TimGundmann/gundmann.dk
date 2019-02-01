@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -11,8 +12,9 @@ import { User } from 'app/user/domain/user';
 export class UserService {
 
   serviceHost = environment.serviceHost;
+  authHeaderName = environment.authHeaderName;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
   public currentUserInfo(): Observable<User> {
     return this.httpClient.get<User>(`${this.serviceHost}current`); 
@@ -22,7 +24,7 @@ export class UserService {
     return this.httpClient.post(`${this.serviceHost}login`, `{ "username": "${email}", "password": "${password}" }`, {observe: 'response'})
       .pipe(
         map(resp => { 
-            localStorage.setItem('Authorization', resp.headers.get('Authorization'));
+            this.authService.setToken(resp.headers.get(this.authHeaderName));
             return true;
         }),
         catchError(error => {

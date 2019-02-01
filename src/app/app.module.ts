@@ -17,17 +17,22 @@ import { AttComponent } from './att/att.component';
 import { MatButtonModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { environment } from 'environments/environment';
+import { SignupComponent } from './user/signup/signup.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'att', component: AttComponent },
+  { path: 'signup', component: SignupComponent },
   { path: 'user', component: UserInfoComponent, canActivate: [AuthGuard] }
 ];
 
+const authTokenName = environment.authTokenName;
+
 export function tokenGetter() {
-  return localStorage.getItem('Authorization');
+  return localStorage.getItem(authTokenName);
 }
 
 @NgModule({
@@ -38,6 +43,7 @@ export function tokenGetter() {
     HomeComponent,
     UserInfoComponent,
     AttComponent,
+    SignupComponent,
   ],
   providers: [
     { provide: LocationStrategy, 

@@ -2,9 +2,15 @@
   <div id="nav-wrapper">
     <nav id="nav">
       <ul>
-        <li class="active"><a href="index.html">Homepage</a></li>
-        <li><a routerLink="signin">Sign is</a></li>
-      </ul>
+        <li class="active"><a routerLink="home">Homepage</a></li>
+        <li>
+          <a routerLink="signin" *ngIf="!isSignedIn()">Sign in</a>
+          <a routerLink="user" *ngIf="isSignedIn()">Profile</a>
+        </li>
+        <li *ngIf="isSignedIn()">
+            <a href="#" (click)="signOut()">Sign out</a>
+          </li>
+        </ul>
     </nav>
   </div>
 
