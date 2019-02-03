@@ -1,7 +1,6 @@
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../domain/user';
-import { userInfo } from 'os';
 
 @Component({
   selector: 'app-signup',
