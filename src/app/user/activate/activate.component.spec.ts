@@ -1,26 +1,27 @@
 import { UserService } from './../../services/user.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
-import { SignupComponent } from './signup.component';
+import { ActivateComponent } from './activate.component';
 
-describe('SignupComponent', () => {
-  let component: SignupComponent;
-  let fixture: ComponentFixture<SignupComponent>;
+describe('ActivateComponent', () => {
+  
+  let component: ActivateComponent;
+  let fixture: ComponentFixture<ActivateComponent>;
 
   class UserServiceMock {}
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignupComponent ],
+      declarations: [ ActivateComponent ],
       providers: [ { provide: UserService, useClass: UserServiceMock } ],
-      imports: [ FormsModule ]
+      imports: [ RouterTestingModule ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SignupComponent);
+    fixture = TestBed.createComponent(ActivateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { environment } from 'environments/environment';
 import { SignupComponent } from './user/signup/signup.component';
+import { ActivateComponent } from './user/activate/activate.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'att', component: AttComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'activate/:token', component: ActivateComponent },
   { path: 'user', component: UserInfoComponent, canActivate: [AuthGuard] }
 ];
 
@@ -44,6 +46,7 @@ export function tokenGetter() {
     UserInfoComponent,
     AttComponent,
     SignupComponent,
+    ActivateComponent,
   ],
   providers: [
     { provide: LocationStrategy, 

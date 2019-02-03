@@ -13,6 +13,8 @@ export class SigninComponent implements OnInit {
 
   password: string;
 
+  message: string;
+
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
@@ -24,7 +26,7 @@ export class SigninComponent implements OnInit {
         if (r) {
           this.router.navigate(['user']);
         } else {
-
+          this.message = 'Invalid password or email';
         }
       })
   }

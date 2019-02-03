@@ -17,15 +17,15 @@ export class UserService {
   constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
   public currentUserInfo(): Observable<User> {
-    return this.httpClient.get<User>(`${this.serviceHost}current`); 
+    return this.httpClient.get<User>(`${this.serviceHost}current`);
   }
 
   public signIn(email: string, password: string): Observable<boolean> {
-    return this.httpClient.post(`${this.serviceHost}login`, `{ "username": "${email}", "password": "${password}" }`, {observe: 'response'})
+    return this.httpClient.post(`${this.serviceHost}login`, `{ "username": "${email}", "password": "${password}" }`, { observe: 'response' })
       .pipe(
-        map(resp => { 
-            this.authService.setToken(resp.headers.get(this.authHeaderName));
-            return true;
+        map(resp => {
+          this.authService.setToken(resp.headers.get(this.authHeaderName));
+          return true;
         }),
         catchError(error => {
           console.log(error);
@@ -33,5 +33,30 @@ export class UserService {
         }
         )
       );
+  }
 
-  }}
+  public signUp(user: User): Observable<boolean> {
+    return this.httpClient.post(`${this.serviceHost}signon`, user)
+      .pipe(
+        map(resp => true),
+        catchError(error => {
+          console.log(error);
+          return of(false);
+        }
+        )
+      );
+  }
+
+  public activat(token: string): Observable<boolean> {
+    return this.httpClient.post(`${this.serviceHost}activate`, token)
+      .pipe(
+        map(resp => true),
+        catchError(error => {
+          console.log(error);
+          return of(false);
+        }
+        )
+      );
+  }
+
+}
