@@ -5,3 +5,7 @@
 .form-group label {
     display: block;
 }
+
+input {
+    background-color: white;
+}

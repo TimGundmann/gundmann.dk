@@ -14,7 +14,7 @@ import { SigninComponent } from './user/signin/signin.component';
 import { UserInfoComponent } from './user/user-info/user-info.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AttComponent } from './att/att.component';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { environment } from 'environments/environment';
@@ -58,6 +58,7 @@ export function tokenGetter() {
     multi: true,
   }],
   imports: [
+    MatInputModule,
     MatButtonModule,
     BrowserModule,
     FormsModule,
