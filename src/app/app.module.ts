@@ -13,7 +13,6 @@ import { MenuComponent } from './menu/menu.component';
 import { SigninComponent } from './user/signin/signin.component';
 import { UserInfoComponent } from './user/user-info/user-info.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AttComponent } from './att/att.component';
 import { MatButtonModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -25,7 +24,6 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'signin', component: SigninComponent },
-  { path: 'att', component: AttComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'activate/:token', component: ActivateComponent },
   { path: 'user', component: UserInfoComponent, canActivate: [AuthGuard] }
@@ -44,7 +42,6 @@ export function tokenGetter() {
     SigninComponent,
     HomeComponent,
     UserInfoComponent,
-    AttComponent,
     SignupComponent,
     ActivateComponent,
   ],
