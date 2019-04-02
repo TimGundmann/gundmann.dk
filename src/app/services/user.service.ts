@@ -21,7 +21,7 @@ export class UserService {
   }
 
   public signIn(email: string, password: string): Observable<boolean> {
-    return this.httpClient.post(`${this.serviceHost}login`, `{ "username": "${email}", "password": "${password}" }`, { observe: 'response' })
+    return this.httpClient.post(`${this.serviceHost}login`, `{ "username": "${email}", "password": "${btoa(password)}" }`, { observe: 'response' })
       .pipe(
         map(resp => {
           this.authService.setToken(resp.headers.get(this.authHeaderName));
