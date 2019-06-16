@@ -19,7 +19,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { environment } from 'environments/environment';
 import { SignupComponent } from './user/signup/signup.component';
 import { ActivateComponent } from './user/activate/activate.component';
-import { CvComponent } from './cv/cv.component';
+// import { CvComponent } from './cv/cv.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -28,8 +28,8 @@ const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'activate/:token', component: ActivateComponent },
   { path: 'user', component: UserInfoComponent, canActivate: [AuthGuard] },
-  { path: 'profile', component: CvComponent },
-  { path: 'auth', component: CvComponent }
+  // { path: 'profile', component: CvComponent },
+  // { path: 'auth', component: CvComponent }
 ];
 
 const authTokenName = environment.authTokenName;
@@ -47,7 +47,7 @@ export function tokenGetter() {
     UserInfoComponent,
     SignupComponent,
     ActivateComponent,
-    CvComponent,
+//    CvComponent,
   ],
   providers: [
     // {
