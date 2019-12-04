@@ -19,7 +19,7 @@ export class ActivateComponent implements OnInit {
         this.userService.activat(params['token'])
           .subscribe(r => {
             if (r) {
-              this.router.navigate(['/signin']);
+              this.router.navigate(['signin']);
             } else {
               this.message = 'Error activating user!';
             }
