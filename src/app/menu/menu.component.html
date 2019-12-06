@@ -3,14 +3,22 @@
     <nav id="nav">
       <ul>
         <li class="active"><a routerLink="home">Homepage</a></li>
-        <li>
-          <a routerLink="/signin" *ngIf="!isSignedIn()">Sign in</a>
-          <a routerLink="user" *ngIf="isSignedIn()">Profile</a>
+        <li *ngIf="!isSignedIn()">
+          <a routerLink="/signin">Sign in</a>
         </li>
         <li *ngIf="isSignedIn()">
-            <a href="#" (click)="signOut()">Sign out</a>
-          </li>
-        </ul>
+          <a routerLink="/user/user" *ngIf="isSignedIn()">User</a>
+        </li>
+        <!-- <li *ngIf="isSignedIn()">
+          <a routerLink="/user/profile" *ngIf="isSignedIn()">Profile</a>
+        </li> -->
+        <li *ngIf="isSignedIn()">
+          <a routerLink="/user/time">Time</a>
+        </li>
+        <li *ngIf="isSignedIn()">
+          <a href="#" (click)="signOut()">Sign out</a>
+        </li>
+      </ul>
     </nav>
   </div>
 

@@ -15,11 +15,11 @@ import { UserInfoComponent } from './user/user-info/user-info.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatButtonModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { environment } from 'environments/environment';
 import { SignupComponent } from './user/signup/signup.component';
 import { ActivateComponent } from './user/activate/activate.component';
-import { CvComponent } from './cv/cv.component';
+import { CvComponent } from './user/cv/cv.component';
+import { TimeRegistrationComponent } from './user/time-registration/time-registration.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -27,8 +27,11 @@ const appRoutes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'activate/:token', component: ActivateComponent },
-  { path: 'user', component: UserInfoComponent, canActivate: [AuthGuard] },
-  { path: 'profile', component: CvComponent },
+  { path: 'user', canActivate: [AuthGuard], children: [
+    { path: 'user', component: UserInfoComponent },
+    { path: 'profile', component: CvComponent },
+    { path: 'time', component: TimeRegistrationComponent },
+  ] },
   { path: 'auth', component: CvComponent }
 ];
 
@@ -48,6 +51,7 @@ export function tokenGetter() {
     SignupComponent,
     ActivateComponent,
     CvComponent,
+    TimeRegistrationComponent,
   ],
   providers: [
     {

@@ -11,7 +11,7 @@ import { User } from 'app/user/domain/user';
 })
 export class UserService {
 
-  serviceHost = environment.serviceHost;
+  serviceHost = `/users/`;
   authHeaderName = environment.authHeaderName;
 
   constructor(private httpClient: HttpClient, private authService: AuthService) { }

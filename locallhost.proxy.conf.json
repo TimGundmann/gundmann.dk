@@ -1,0 +1,6 @@
+{
+    "/users": {
+        "target": "https://gundmann.dk",
+        "secure": false
+    }
+}

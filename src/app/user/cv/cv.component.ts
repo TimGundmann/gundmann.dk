@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
-import { LinkedInService } from './../services/linked-in.service';
+import { LinkedInService } from '../../services/linked-in.service';
 
 @Component({
   selector: 'app-cv',
@@ -27,12 +27,12 @@ export class CvComponent implements OnInit {
         this.code = code;
         if (!this.code) {
           window.location.href = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${this.CLIENT_ID}&redirect_uri=${this.REDIRECT_URI}&scope=r_liteprofile`;
-        }    
+        }
       });
   }
 
   ngOnInit() {
-   this.linkedIn.getProfile(this.code).subscribe(profile => console.log('Profile: ', profile));
+    this.linkedIn.getProfile(this.code).subscribe(profile => console.log('Profile: ', profile));
   }
 
 }
