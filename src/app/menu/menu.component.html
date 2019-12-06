@@ -4,7 +4,7 @@
       <ul>
         <li class="active"><a routerLink="home">Homepage</a></li>
         <li>
-          <a routerLink="signin" *ngIf="!isSignedIn()">Sign in</a>
+          <a routerLink="/signin" *ngIf="!isSignedIn()">Sign in</a>
           <a routerLink="user" *ngIf="isSignedIn()">Profile</a>
         </li>
         <li *ngIf="isSignedIn()">
