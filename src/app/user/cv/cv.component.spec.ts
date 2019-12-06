@@ -1,6 +1,9 @@
+import { LinkedInService } from './../../services/linked-in.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CvComponent } from './cv.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('CvComponent', () => {
   let component: CvComponent;
@@ -8,7 +11,14 @@ describe('CvComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CvComponent ]
+      declarations: [ CvComponent ],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule
+      ],
+      providers: [
+        LinkedInService
+      ]
     })
     .compileComponents();
   }));
