@@ -1,3 +1,4 @@
+import { TimeService } from './../../services/time.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TimeRegistrationComponent implements OnInit {
 
-  constructor() { }
+  activeDate: Date;
+
+  constructor(private timeService: TimeService) { }
 
   ngOnInit() {
+    this.timeService.active().subscribe(date => this.activeDate = date);
   }
 
 }

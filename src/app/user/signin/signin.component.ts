@@ -28,7 +28,8 @@ export class SigninComponent implements OnInit {
         } else {
           this.message = 'Invalid password or email';
         }
-      })
-  }
+      },
+      error => this.message = 'Invalid password or email'
+      )}
 
 }

@@ -2,5 +2,9 @@
     "/users": {
         "target": "https://gundmann.dk",
         "secure": false
+    },
+    "/time": {
+        "target": "https://busroskilde.dk",
+        "secure": false
     }
 }

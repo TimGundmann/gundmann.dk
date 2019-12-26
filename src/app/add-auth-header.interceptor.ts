@@ -16,8 +16,8 @@ export class AddAuthHeaderInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (this.authService.getToken()) {
-    const clonedRequest = req.clone({ headers: req.headers.set(this.authHeaderName, this.authService.getToken()) });
-    return next.handle(clonedRequest);
+      const clonedRequest = req.clone({ headers: req.headers.set(this.authHeaderName, this.authService.getToken()) });
+      return next.handle(clonedRequest);
     }
     return next.handle(req);
   }
