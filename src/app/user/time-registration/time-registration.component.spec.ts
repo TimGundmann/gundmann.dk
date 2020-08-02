@@ -6,7 +6,7 @@ import { TimeRegistrationComponent } from './time-registration.component';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-describe('TimeRegistrationComponent', () => {
+xdescribe('TimeRegistrationComponent', () => {
   let component: TimeRegistrationComponent;
   let fixture: ComponentFixture<TimeRegistrationComponent>;
   let debugElement: DebugElement;
