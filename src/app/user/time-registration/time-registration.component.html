@@ -1,1 +1,2 @@
-<button mat-fab color="accent" type="button">{{activeDate ? 'Stop' : 'Start'}}</button>
+<h4>{{message}}</h4>
+<button id="activityButton" mat-fab color="accent" type="button" (click)="toggleActivation()">{{hasActiveRegistration ? 'Stop' : 'Start'}}</button>

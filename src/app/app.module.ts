@@ -20,6 +20,8 @@ import { SignupComponent } from './user/signup/signup.component';
 import { ActivateComponent } from './user/activate/activate.component';
 import { CvComponent } from './user/cv/cv.component';
 import { TimeRegistrationComponent } from './user/time-registration/time-registration.component';
+import { InjectableRxStompConfig, RxStompService, rxStompServiceFactory } from '@stomp/ng2-stompjs';
+import { myRxStompConfig } from './services/socket.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -58,7 +60,17 @@ export function tokenGetter() {
       provide: HTTP_INTERCEPTORS,
       useClass: AddAuthHeaderInterceptor,
       multi: true,
-    }],
+    },
+    {
+      provide: InjectableRxStompConfig,
+      useValue: myRxStompConfig
+    },
+    {
+      provide: RxStompService,
+      useFactory: rxStompServiceFactory,
+      deps: [InjectableRxStompConfig]
+    }    
+  ],
   imports: [
     MatInputModule,
     MatButtonModule,
