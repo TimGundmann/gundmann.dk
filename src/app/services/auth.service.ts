@@ -19,11 +19,14 @@ export class AuthService {
     return false;
   }
 
-  public getToken(): string {
+  public getToken(): string | null {
     return localStorage.getItem(this.authTokenName);
   }
 
-  public setToken(token: string): void {
+  public setToken(token: string | null): void {
+    if (!token) {
+      return;
+    }
     localStorage.setItem(this.authTokenName, token);
   }
 

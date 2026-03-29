@@ -1,7 +1,7 @@
 import { AuthService } from './auth.service';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { User } from 'app/user/domain/user';
@@ -23,7 +23,7 @@ export class UserService {
   public signIn(email: string, password: string): Observable<boolean> {
     return this.httpClient.post(`${this.serviceHost}login`, `{ "username": "${email}", "password": "${btoa(password)}" }`, { observe: 'response' })
       .pipe(
-        map(resp => {
+        map((resp: HttpResponse<Object>) => {
           this.authService.setToken(resp.headers.get(this.authHeaderName));
           return true;
         }),

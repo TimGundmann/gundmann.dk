@@ -5,7 +5,6 @@ import { HomeComponent } from './home/home.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -13,8 +12,10 @@ import { MenuComponent } from './menu/menu.component';
 import { SigninComponent } from './user/signin/signin.component';
 import { UserInfoComponent } from './user/user-info/user-info.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MatButtonModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { environment } from 'environments/environment';
 import { SignupComponent } from './user/signup/signup.component';
 import { ActivateComponent } from './user/activate/activate.component';
@@ -74,9 +75,9 @@ export function tokenGetter() {
   imports: [
     MatInputModule,
     MatButtonModule,
+    MatFormFieldModule,
     BrowserModule,
     FormsModule,
-    HttpModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
@@ -84,7 +85,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['gundmann.dk'],
+        allowedDomains: ['gundmann.dk'],
       }
     }),
   ],

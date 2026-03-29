@@ -5,11 +5,12 @@ import { User } from '../domain/user';
 @Component({
   selector: 'app-user-info',
   templateUrl: './user-info.component.html',
-  styleUrls: ['./user-info.component.css']
+  styleUrls: ['./user-info.component.css'],
+  standalone: false
 })
 export class UserInfoComponent implements OnInit {
 
-  user: User;
+  user?: User;
 
   constructor(private userService: UserService) { }
 

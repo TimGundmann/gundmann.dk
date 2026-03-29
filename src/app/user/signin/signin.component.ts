@@ -5,15 +5,16 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  styleUrls: ['./signin.component.css'],
+  standalone: false
 })
 export class SigninComponent implements OnInit {
 
-  email: string;
+  email = '';
 
-  password: string;
+  password = '';
 
-  message: string;
+  message = '';
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -30,6 +31,7 @@ export class SigninComponent implements OnInit {
         }
       },
       error => this.message = 'Invalid password or email'
-      )}
+      );
+  }
 
 }

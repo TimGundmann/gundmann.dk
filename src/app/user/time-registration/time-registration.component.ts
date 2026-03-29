@@ -6,11 +6,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-time-registration',
   templateUrl: './time-registration.component.html',
-  styleUrls: ['./time-registration.component.css']
+  styleUrls: ['./time-registration.component.css'],
+  standalone: false
 })
 export class TimeRegistrationComponent implements OnInit {
 
-  activeDate: Date;
+  activeDate?: Date;
   message = '';
 
   constructor(
@@ -30,7 +31,7 @@ export class TimeRegistrationComponent implements OnInit {
 
   toggleActivation() {
     if (this.hasActiveRegistration) {
-      this.timeService.deactivate().subscribe(date => this.activeDate = undefined);
+      this.timeService.deactivate().subscribe(() => this.activeDate = undefined);
     } else {
       this.timeService.activate().subscribe(date => this.activeDate = date);
     }

@@ -5,13 +5,14 @@ import { User } from '../domain/user';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
+  standalone: false
 })
 export class SignupComponent implements OnInit {
 
   user: User = { email: ''};
-  secondPassword: string;
-  message: string;
+  secondPassword = '';
+  message = '';
   signingup = true;
 
   constructor(private userService: UserService) { }
